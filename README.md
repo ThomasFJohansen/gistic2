@@ -10,7 +10,7 @@ This repository contains a submodule of matlab functions for processing copy num
 To ensure that the snputil subdirectory is populated with files, you should clone this repository using
 the *--recursive* option:
 ```
-git clone --recursive  https://github.com/broadinstitute/gistic2.git
+git clone --recursive  https://github.com/ThomasFJohansen/gistic2.git
 ```
 ## Repository directory structure
 > *docs* - HTML source for links and user documentation published in the GISTIC GitHub page.
