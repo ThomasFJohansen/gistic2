@@ -3,6 +3,8 @@ This repository contains the Matlab source code for GISTIC (**G**enomic **I**den
 
 Check out the <a href="https://broadinstitute.github.io/gistic2">GISTIC GitHub Page</a> for links to GISTIC downloads, user documentaion, and publications.
 
+**Note from forker:** Forked this to attempt to fix the issues experienced on modern AMD CPU's. 
+
 ## Cloning the gistic2 project
 This repository contains a submodule of matlab functions for processing copy number data named 'snputil.'
 To ensure that the snputil subdirectory is populated with files, you should clone this repository using
