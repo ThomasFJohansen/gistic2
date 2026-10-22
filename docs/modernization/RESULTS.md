@@ -88,8 +88,13 @@ persist. The selected MKL instruction branch remains unverified.
 The unrestricted GenePattern profile also completed (169.06 wall seconds,
 174.73 child CPU seconds) and exactly matched all 12 published text tables;
 that result was observed in the transcript but its raw files were lost. The
-unfinished restricted GenePattern check is being rerun against the independently
-published tables; it is not counted as passed until its results are retained.
+restricted GenePattern check was then completed in a restored guest reporting the
+same CPU/OS/Runtime versions: exit 0, 140.04 wall seconds,
+136.70 child CPU seconds, and an exact match to all 12 independently
+published tables at zero tolerance. Its [complete results and logs](validation/2026-10-22/genepattern-final/)
+are retained. This profile disables saved MAT outputs, so it verifies published
+text tables, not an independent full-precision MAT reference. The separate guest
+instance means its timing is not paired with the earlier unrestricted timing.
 
 The independent GenePattern tables were fetched from a pinned commit and all
 12 Git blob hashes/sizes verified. Their profile differs from the standalone

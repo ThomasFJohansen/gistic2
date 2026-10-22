@@ -14,3 +14,6 @@ The repeat original/off/single measurements and first unrestricted GenePattern
 comparison were observed in the execution transcript, but their raw files were
 lost in a second environment reset before upload. RESULTS labels those observations
 separately. They must not be mistaken for retained, independently auditable logs.
+
+`genepattern-final/` retains the completed single-mode run against all 12 pinned
+independently published GenePattern tables, after the second environment reset.

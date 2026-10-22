@@ -70,3 +70,9 @@ DISPLAY unset by default; documented opt-ins permit deliberate overrides.
 The original installation documents remain in `support/` and `user_docs/` for
 historical reference. The new workflow does not redistribute MATLAB Runtime or
 claim support for untested MATLAB releases, physical CPUs, containers or cohorts.
+
+Validation recorded on 2026-10-22: the original R2014a executable completed the
+seven-condition example matrix with exact scientific output matches, and the
+restricted GenePattern profile matched all 12 published reference tables. Tests
+ran in a KVM guest reporting AMD EPYC 9V74; physical AMD validation and a modern
+licensed rebuild remain outstanding. See the results report for evidence limits.
