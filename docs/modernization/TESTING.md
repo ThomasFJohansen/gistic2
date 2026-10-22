@@ -69,7 +69,7 @@ model output. Optional Python readers support v5 and v7.3 MAT files:
 
 ```bash
 python3 -m venv /absolute/mat-comparison-env
-/absolute/mat-comparison-env/bin/pip install numpy scipy h5py
+/absolute/mat-comparison-env/bin/pip install -r tests/requirements-mat.txt
 /absolute/mat-comparison-env/bin/python scripts/compare_mat_outputs.py \
   /baseline/outputs /candidate/outputs
 ```

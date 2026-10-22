@@ -8,6 +8,9 @@ assert(~isempty(ver('stats')) && license('test','Statistics_Toolbox'),'Statistic
 diary(fullfile(out,'build.log'));
 cleanup = onCleanup(@() diary('off')); %#ok<NASGU>
 disp(version); ver; disp(version('-blas')); disp(version('-lapack'));
+cc = mex.getCompilerConfigurations('C','Selected');
+assert(~isempty(cc),'Configure a supported C compiler with mex -setup C');
+disp(cc);
 stage = fullfile(out,'build-source'); mkdir(stage);
 copyfile(fullfile(repo,'source'),fullfile(stage,'source'));
 copyfile(fullfile(repo,'snputil'),fullfile(stage,'snputil'));

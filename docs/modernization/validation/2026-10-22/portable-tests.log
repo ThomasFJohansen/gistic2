@@ -1,3 +1,4 @@
+test_blank_numeric_gene_data_rejected (test_comparison.Comparison.test_blank_numeric_gene_data_rejected) ... ok
 test_calls_strict (test_comparison.Comparison.test_calls_strict) ... ok
 test_continuous_tolerance_explicit (test_comparison.Comparison.test_continuous_tolerance_explicit) ... ok
 test_coordinates_strict (test_comparison.Comparison.test_coordinates_strict) ... ok
@@ -26,6 +27,6 @@ test_hdf_reference_names_do_not_change_values (test_mat_comparison.MatComparison
 test_struct_coordinate_change (test_mat_comparison.MatComparison.test_struct_coordinate_change) ... ok
 
 ----------------------------------------------------------------------
-Ran 26 tests in 0.694s
+Ran 27 tests in 0.826s
 
 OK

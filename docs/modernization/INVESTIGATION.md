@@ -48,8 +48,14 @@ source checkout; their SHA-256 hashes accompany each run.
 Directly loading the installed `mkl.so` and calling `MKL_Get_Version_String`
 reported Intel MKL **11.0.5, build 20130612**, Intel 64 architecture. This identifies
 the installed library, not the dispatch branch actually chosen by MATLAB.
-Process maps are restricted/inaccessible in this sandbox; failed attempts are
-recorded. No claim is made that `MKL_CBWR`/`MKL_DEBUG_CPU_TYPE` was honored.
+Initial process inspection failed because the Popen PID was not visible in the
+mounted /proc namespace. A subsequent exact executable/output-argument lookup
+located the process: repeated off/single runs mapped this Runtime's `mkl.so`,
+`mklcompat.so`, `libmwblas.so`, `libmwlapack.so`, `libmwmathelem.so` and `libiomp5.so`.
+Those maps identify loaded libraries, not the instruction-dispatch branch. The
+repeat-run raw files were lost at a later environment reset; these observations
+were recorded in the execution transcript. No claim is made that
+`MKL_CBWR`/`MKL_DEBUG_CPU_TYPE` was honored.
 
 ## Upstream reports and what they establish
 

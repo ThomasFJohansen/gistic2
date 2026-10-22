@@ -9,3 +9,8 @@ committing large MAT files, caches, plots, Runtime components or downloaded bina
 `portable-tests.log` records local unit tests. `stale-binary.log` records the
 independent 7.14 versus 8.3 loader mismatch. `build-attempt.log` records the
 missing licensed MATLAB prerequisite. No unavailable test is called passed.
+
+The repeat original/off/single measurements and first unrestricted GenePattern
+comparison were observed in the execution transcript, but their raw files were
+lost in a second environment reset before upload. RESULTS labels those observations
+separately. They must not be mistaken for retained, independently auditable logs.

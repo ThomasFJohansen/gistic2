@@ -47,3 +47,9 @@ class Comparison(unittest.TestCase):
         for root in (self.a,self.b):
             (root/'amp_genes.conf_90.txt').write_text('header\tpeak\t\nq value\t0.1\t\nresidual q value\t0.2\t\n')
         self.assertTrue(compare(self.a,self.b)['equal'])
+
+    def test_blank_numeric_gene_data_rejected(self):
+        for root in (self.a,self.b):
+            p=root/'focal_data_by_genes.txt'
+            p.write_text(p.read_text().replace('\t0.2\n','\t\n'))
+        self.assertFalse(compare(self.a,self.b)['equal'])

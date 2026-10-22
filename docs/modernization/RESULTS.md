@@ -62,9 +62,34 @@ unverified and the baseline already succeeds.
 
 ## Reproducibility and external reference checks
 
-A second original/off/single series and the separately configured published
-GenePattern-reference comparison are being evaluated. Until their recorded
-results are added, only the seven completed runs above are claimed here.
+A second original/off/single series completed and matched the first original
+run in all text tables and all four required MAT outputs. The execution transcript
+recorded these measurements:
+
+| Second execution | Wall seconds | Child CPU seconds | Scientific comparison |
+| --- | ---: | ---: | --- |
+| Original | 154.03 | 164.20 | Exact match |
+| New launcher `off` | 157.05 | 168.73 | Exact match |
+| `single` | 157.04 | 153.40 | Exact match |
+
+A later environment reset removed those repeat-run raw files before they were
+committed. These are observed results, but the repository cannot independently
+recheck their raw artifacts. The first seven-case matrix above has retained logs,
+measurements, hashes and scientific review. Do not combine the repeat timings
+into a stronger performance claim.
+
+Repeated process inspection observed CPUs `0-8` and 33 OS threads for `off`,
+and CPU `0` (the first permitted CPU, not hardcoded) with 17 OS threads for
+`single`. Both mapped this Runtime's MKL, mklcompat, BLAS, LAPACK, libmwmathelem,
+and libiomp5 libraries. These observations likewise precede the reset. A single
+permitted CPU does not imply a single OS thread; Java/Runtime support threads
+persist. The selected MKL instruction branch remains unverified.
+
+The unrestricted GenePattern profile also completed (169.06 wall seconds,
+174.73 child CPU seconds) and exactly matched all 12 published text tables;
+that result was observed in the transcript but its raw files were lost. The
+unfinished restricted GenePattern check is being rerun against the independently
+published tables; it is not counted as passed until its results are retained.
 
 The independent GenePattern tables were fetched from a pinned commit and all
 12 Git blob hashes/sizes verified. Their profile differs from the standalone
@@ -77,7 +102,7 @@ reference is not established from input bytes alone.
 
 | Test | Result and scope |
 | --- | --- |
-| 26 Python unit tests | Passed; launcher/validator behavior and optional full-precision reader tests |
+| 27 Python unit tests | Passed; launcher/validator behavior and optional full-precision reader tests |
 | Bash syntax / Python compilation / Git whitespace checks | Passed |
 | Stale repository binary with Runtime 8.3 | Reproduced loader error requesting MCR 7.14; unrelated to peak-stage crash |
 | Original R2014a installation and example | Completed; no native crash |
@@ -88,7 +113,7 @@ reference is not established from input bytes alone.
 | Physical affected AMD, Intel comparison, RHEL 9 | Unverified: target hardware/OS not available |
 | Apptainer/Singularity/Docker/Podman execution | Unverified: no container engine installed |
 | Patient cohorts / failing dataset / minimized native reproducer | Unverified: data and crash dump unavailable |
-| Loaded native-library maps / MKL dispatch branch | Unverified: sandbox process-map access unavailable; installed MKL version measured separately |
+| Loaded native libraries / MKL dispatch branch | Runtime library paths observed in repeated off/single maps; selected instruction branch remains unverified |
 
 The October 21 session had an incomplete focal gene table despite a successful
 process exit. That baseline was rejected. Its scratch files were lost at the

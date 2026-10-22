@@ -105,3 +105,42 @@ and complete release/update identification outside the source repository.
 The old `support/release_gistic_source.sh` and installation documents remain as
 historical records. Its site-specific SVN/Broad paths, bundled installer and
 permissions are not the new build workflow.
+
+## Pinned original-runtime assets
+
+For the same legacy executable used in the tests, download from GenePattern's
+pinned revision and check it before making it executable:
+
+```bash
+export GISTIC_ASSET_DIR=/absolute/new-gistic-assets
+mkdir -p "$GISTIC_ASSET_DIR"
+curl -fL --retry 2 \
+  https://raw.githubusercontent.com/genepattern/GISTIC_2.0/9455555051a59a2aa095bc84834227622b13bec1/gp_gistic2_from_seg \
+  -o "$GISTIC_ASSET_DIR/gp_gistic2_from_seg"
+(cd "$GISTIC_ASSET_DIR" && sha256sum -c <<'SUMS'
+1045c8372d58b26a8638b703d054e80472bb1527fcf015921344b5f299921576  gp_gistic2_from_seg
+SUMS
+)
+chmod +x "$GISTIC_ASSET_DIR/gp_gistic2_from_seg"
+```
+
+Download/install R2014a from the MathWorks link in INVESTIGATION, verifying the
+recorded installer SHA-256. The test installation used:
+
+```bash
+unzip -q "$GISTIC_ASSET_DIR/MCR_R2014a.zip" -d "$GISTIC_ASSET_DIR/installer"
+env -u DISPLAY "$GISTIC_ASSET_DIR/installer/install" \
+  -mode silent -agreeToLicense yes \
+  -destinationFolder "$GISTIC_ASSET_DIR/mcr" \
+  -outputFile "$GISTIC_ASSET_DIR/install.log"
+./scripts/prepare_legacy.sh "$GISTIC_ASSET_DIR/gp_gistic2_from_seg" \
+  "$GISTIC_ASSET_DIR/mcr/v83" "$GISTIC_ASSET_DIR/candidate"
+"$GISTIC_ASSET_DIR/candidate/run_gistic_example" "$GISTIC_ASSET_DIR/example-off"
+```
+
+The silent installer invocation accepts MathWorks' license terms. Required OS
+libraries still depend on the host. On our Ubuntu 24.04 guest, the real ncurses5
+and tinfo5 packages linked/hashed in INVESTIGATION were extracted privately with
+`dpkg-deb -x`. Set `GISTIC_EXTRA_LIBRARY_PATH` to that private
+`lib/x86_64-linux-gnu` directory if needed. No global library replacement or
+ABI-6-to-ABI-5 renaming is involved.

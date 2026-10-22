@@ -1,0 +1,4 @@
+# Optional full-precision validation environment tested with Python 3.12.
+numpy==2.3.5
+scipy==1.17.0
+h5py==3.16.0
