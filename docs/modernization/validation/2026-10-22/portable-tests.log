@@ -1,0 +1,31 @@
+test_calls_strict (test_comparison.Comparison.test_calls_strict) ... ok
+test_continuous_tolerance_explicit (test_comparison.Comparison.test_continuous_tolerance_explicit) ... ok
+test_coordinates_strict (test_comparison.Comparison.test_coordinates_strict) ... ok
+test_invalid_tolerance (test_comparison.Comparison.test_invalid_tolerance) ... ok
+test_large_change_rejected (test_comparison.Comparison.test_large_change_rejected) ... ok
+test_missing (test_comparison.Comparison.test_missing) ... ok
+test_nonfinite_rejected_even_identical (test_comparison.Comparison.test_nonfinite_rejected_even_identical) ... ok
+test_padded_gene_summary_cells (test_comparison.Comparison.test_padded_gene_summary_cells) ... ok
+test_same (test_comparison.Comparison.test_same) ... ok
+test_truncated_gene_table (test_comparison.Comparison.test_truncated_gene_table) ... ok
+test_arguments_and_cwd (test_launcher.Launcher.test_arguments_and_cwd) ... ok
+test_exit_status (test_launcher.Launcher.test_exit_status) ... ok
+test_explicit_inherit_headless (test_launcher.Launcher.test_explicit_inherit_headless) ... ok
+test_extra_library_path_validation (test_launcher.Launcher.test_extra_library_path_validation) ... ok
+test_invalid_options (test_launcher.Launcher.test_invalid_options) ... ok
+test_library_isolation (test_launcher.Launcher.test_library_isolation) ... ok
+test_missing_runtime (test_launcher.Launcher.test_missing_runtime) ... ok
+test_missing_taskset (test_launcher.Launcher.test_missing_taskset) ... ok
+test_no_implicit_mkl_override (test_launcher.Launcher.test_no_implicit_mkl_override) ... ok
+test_off_preserves_threads_affinity (test_launcher.Launcher.test_off_preserves_threads_affinity) ... ok
+test_parent_root (test_launcher.Launcher.test_parent_root) ... ok
+test_respects_restricted_cpuset (test_launcher.Launcher.test_respects_restricted_cpuset) ... ok
+test_threads_only (test_launcher.Launcher.test_threads_only) ... ok
+test_full_precision_change_not_hidden_by_rounding (test_mat_comparison.MatComparison.test_full_precision_change_not_hidden_by_rounding) ... ok
+test_hdf_reference_names_do_not_change_values (test_mat_comparison.MatComparison.test_hdf_reference_names_do_not_change_values) ... ok
+test_struct_coordinate_change (test_mat_comparison.MatComparison.test_struct_coordinate_change) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.694s
+
+OK

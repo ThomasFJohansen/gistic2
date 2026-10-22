@@ -1,0 +1,331 @@
+{
+  "note": "Re-evaluated unchanged saved outputs after correcting the expected BED filename (regions_track.conf_90.bed) and accepting identical empty gene-summary padding cells. Original raw results retained.",
+  "raw_summary_sha256": "a80997020dac41b831ac16b4273a9ad4f40e7f50425d788eb2fffa2adf54b382",
+  "comparator_sha256": "d007bb32ec6547ab3c3934e63dc6319290cb0347154a4f0b8cd1e85971819900",
+  "runs": [
+    {
+      "case": "original",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 150.02144830299994,
+      "cpu_seconds": 161.296519,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "off",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 158.02256002799993,
+      "cpu_seconds": 167.828258,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "threads",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 154.03222711700005,
+      "cpu_seconds": 164.74607999999998,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "affinity",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 154.02561812099998,
+      "cpu_seconds": 150.45745099999996,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "single",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 150.023956602,
+      "cpu_seconds": 146.65926100000004,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "sse42",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 153.02083625699993,
+      "cpu_seconds": 162.743372,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    },
+    {
+      "case": "debug4",
+      "repeat": 1,
+      "returncode": 0,
+      "timeout": false,
+      "wall_seconds": 152.02712465700006,
+      "cpu_seconds": 159.01486499999996,
+      "validation_errors": [],
+      "output_hashes_unchanged": true,
+      "text_comparison": {
+        "equal": true,
+        "files_compared": 14,
+        "rtol": 0.0,
+        "atol": 0.0,
+        "different_numeric_text": 0,
+        "errors": []
+      },
+      "status": "match",
+      "mat_comparison": {
+        "files": {
+          "scores.0.5.mat": {
+            "status": "exact_match"
+          },
+          "peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "wide_peak_regs.mat": {
+            "status": "exact_match"
+          },
+          "perm_ads.mat": {
+            "status": "exact_match"
+          },
+          "orig_stats.mat": {
+            "status": "unverified_missing_optional"
+          },
+          "gene_stats.mat": {
+            "status": "unverified_missing_optional"
+          }
+        },
+        "required_match": true,
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "h5py": "3.16.0",
+        "method": "recursive exact values/dtypes/shapes; MAT metadata and internal reference names excluded; NaNs compare equal"
+      }
+    }
+  ],
+  "mat_comparator_sha256": "f3db06faef4f92efc23c0f47309ccae0b23f60a06b7cd1c1e8931dcbd5e5aac3",
+  "baseline": "/tmp/gistic-matrix-20261022/01-original/outputs"
+}

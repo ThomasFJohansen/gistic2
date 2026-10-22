@@ -27,8 +27,23 @@ def sha(path):
 def write(path, value):
     path.write_text(json.dumps(value, indent=2) + '\n')
 
-def snapshot(pid):
-    result = {'pid': pid}
+def snapshot(pid, executable=None, output=None):
+    result = {'popen_pid': pid}
+    # Some sandbox hosts expose a /proc mount from a different PID namespace.
+    # Locate only the exact executable and unique output argv, never guess a PID.
+    if executable is not None and output is not None:
+        matches = []
+        for path in Path('/proc').glob('[0-9]*/cmdline'):
+            try:
+                argv = path.read_bytes().split(b'\0')
+                if argv and argv[0] == os.fsencode(executable) and os.fsencode(output) in argv:
+                    matches.append(int(path.parent.name))
+            except OSError:
+                pass
+        if len(matches) == 1:
+            pid = matches[0]
+        result['matching_proc_pids'] = matches
+    result['inspected_pid'] = pid
     for name in ('status', 'maps'):
         try:
             data = Path(f'/proc/{pid}/{name}').read_text()
@@ -132,7 +147,7 @@ def main():
                     while proc.poll() is None:
                         elapsed = time.monotonic()-start
                         if len(samples) < 3 and elapsed >= (len(samples)+1)*10:
-                            samples.append(snapshot(proc.pid))
+                            samples.append(snapshot(proc.pid, a.executable, out))
                         if elapsed > a.timeout:
                             timed_out = True
                             os.killpg(proc.pid,signal.SIGTERM)

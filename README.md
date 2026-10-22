@@ -31,3 +31,42 @@ git clone --recursive  https://github.com/ThomasFJohansen/gistic2.git
 
 > *user_docs* - HTML source for standalone documentation in the current GISTIC tarball (v2.0.23).
 
+
+## Modern Linux/HPC work in this fork
+
+The `modernize-runtime-hpc` branch adds an explicit compatibility launcher,
+reproducible build tooling and scientific regression checks. **The reported AMD
+floating-point crash is not yet established as fixed. No modern standalone
+executable has been rebuilt.** The MATLAB scientific source, submodule revision,
+legacy binary, model and thresholds are unchanged.
+
+The launcher supports the original 2.0.23 **R2014a/Runtime 8.3 executable** and
+future builds with ABI metadata. The binary historically checked into `support/`
+actually requests MCR 7.14; it is not the R2014a release executable. Supply an
+original release binary using `scripts/prepare_legacy.sh` instead of trying to
+repair this mismatch by renaming Runtime libraries.
+
+```bash
+# Use absolute paths; preserve the original installation.
+./scripts/prepare_legacy.sh /original/gp_gistic2_from_seg /runtime/v83 /new/candidate
+GISTIC_COMPAT=off /new/candidate/run_gistic_example /new/example-off
+GISTIC_COMPAT=single /new/candidate/run_gistic_example /new/example-single
+```
+
+`off` is the default. `threads` limits OMP/MKL/OpenBLAS threads; `affinity` chooses
+one allowed logical CPU; `single` combines both. Affinity respects the current
+cpuset/Slurm allocation and requires `taskset` from util-linux. No CPU-vendor
+autodetection or implicit historical MKL override is used. Bash, coreutils and
+Linux `/proc` are required. Arguments are quoted and forwarded without changing
+the GISTIC CLI, including calls from R/blit. Library overrides are isolated and
+DISPLAY unset by default; documented opt-ins permit deliberate overrides.
+
+- [Investigation, source audit and hypotheses](docs/modernization/INVESTIGATION.md)
+- [Measured results, compatibility matrix and remaining gates](docs/modernization/RESULTS.md)
+- [Licensed modern MATLAB build and source execution](docs/modernization/BUILD.md)
+- [Regression commands and comparison policy](docs/modernization/TESTING.md)
+- [GenomeDK, TCGA-BRCA, blit and Apptainer instructions](docs/modernization/GENOMEDK.md)
+
+The original installation documents remain in `support/` and `user_docs/` for
+historical reference. The new workflow does not redistribute MATLAB Runtime or
+claim support for untested MATLAB releases, physical CPUs, containers or cohorts.

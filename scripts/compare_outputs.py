@@ -47,7 +47,7 @@ def compare(left, right, rtol=0.0, atol=0.0):
                 break
             for ci, (av, bv) in enumerate(zip(ar, br)):
                 equal = av == bv
-                if continuous(name, ri, ci):
+                if continuous(name, ri, ci) and not (av == bv == ""):
                     try:
                         x, y = float(av), float(bv)
                         equal = math.isfinite(x) and math.isfinite(y) and abs(x-y) <= atol + rtol*max(abs(x), abs(y))

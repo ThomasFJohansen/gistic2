@@ -1,0 +1,90 @@
+{
+  "case": "sse42",
+  "repeat": 1,
+  "returncode": 0,
+  "timeout": false,
+  "wall_seconds": 153.02083625699993,
+  "cpu_seconds": 162.743372,
+  "argv": [
+    "/tmp/gistic2-work/support/gistic2",
+    "-b",
+    "/tmp/gistic-matrix-20261022/01-sse42/outputs",
+    "-seg",
+    "/tmp/gistic2-work/support/examplefiles/segmentationfile.txt",
+    "-mk",
+    "/tmp/gistic2-work/support/examplefiles/markersfile.txt",
+    "-refgene",
+    "/tmp/gistic2-work/support/refgenefiles/hg16.mat",
+    "-alf",
+    "/tmp/gistic2-work/support/examplefiles/arraylistfile.txt",
+    "-cnv",
+    "/tmp/gistic2-work/support/examplefiles/cnvfile.txt",
+    "-genegistic",
+    "1",
+    "-smallmem",
+    "1",
+    "-broad",
+    "1",
+    "-brlen",
+    "0.5",
+    "-conf",
+    "0.90",
+    "-armpeel",
+    "1",
+    "-savegene",
+    "1",
+    "-gcm",
+    "extreme"
+  ],
+  "process_samples": [
+    {
+      "pid": 269,
+      "status_unavailable": "[Errno 2] No such file or directory: '/proc/269/status'",
+      "maps_unavailable": "[Errno 2] No such file or directory: '/proc/269/maps'"
+    },
+    {
+      "pid": 269,
+      "status_unavailable": "[Errno 2] No such file or directory: '/proc/269/status'",
+      "maps_unavailable": "[Errno 2] No such file or directory: '/proc/269/maps'"
+    },
+    {
+      "pid": 269,
+      "status_unavailable": "[Errno 2] No such file or directory: '/proc/269/status'",
+      "maps_unavailable": "[Errno 2] No such file or directory: '/proc/269/maps'"
+    }
+  ],
+  "validation_errors": [
+    "missing/empty regions_track.bed"
+  ],
+  "status": "failed",
+  "output_sha256": {
+    "broad_significance_results.txt": "f5a4997b22a16eda7b5170a94d640fe8dfbdb2ea806ca29f0838bf75328af4d4",
+    "scores.gistic": "cfbf24f86a702405825b0cccc828d1df7b829b97e5ad981c2909015235a9c572",
+    "broad_data_by_genes.txt": "8c92536f93f72e52677b1fc0b152728db6d5b09ede397b6b80044a1322594f81",
+    "gistic_inputs.mat": "776816c93d3a824c61669b1e3ff5bf8fd42f4c9009c9359ac4ca1765673c8c75",
+    "amp_qplot.pdf": "3d90626437d145637bb8c3320cc03e8fae59cfaa41da4c0374a87f44ec3a60d3",
+    "raw_copy_number.png": "7652a8a8fe888ba51f5eb088a366edb8a7224ca877e6e81cead3bb14cbcbc44f",
+    "sample_cutoffs.txt": "e7b93c3f8f63c3fab0074918b45f0e18961a77b9e1524133f27730ebed834be1",
+    "broad_values_by_arm.txt": "d3ec8b88b1b93fa64629543c58384c1a99f27669417a2bf526dc5c1d3aaaeb0b",
+    "sample_seg_counts.txt": "b79718d13c75ba7af267da856c95673d48129b1e87b5c3f008986474fc18581b",
+    "regions_track.conf_90.bed": "ad0f10df5f034f29e5ff9303e08e0f9a1f7c28530a4dc183a0c63f6a58d38ee7",
+    "arraylistfile.txt": "b0f401307ca0e79c3ae36c5a691801f003b455936502242f1eb9489da4fc8bc9",
+    "perm_ads.mat": "5a26153e2991b413a08b1ba48e3f2c84b6abe71a41c3dbd848cb3953f0d46a38",
+    "all_data_by_genes.txt": "2477203ba5b2d0b3ad4093a26833c700ae23d8ff1dfe1b23a919c95c93694f90",
+    "del_qplot.pdf": "2e3ca93eb905d22bc066eb2f3898f1055fcc62d256787292963d24fe22d3ee46",
+    "del_genes.conf_90.txt": "2e2d9735f6ff52bd00fe5c8fac4f011f3547715031cc8df611cea73e841f37d7",
+    "wide_peak_regs.mat": "5b6ebb4ca9ef7454f66c71ed93b0d0e04c9016bdb717591cbb5c1b4174214ec1",
+    "amp_genes.conf_90.txt": "c41a0eaa0b1f35d8824fc4cd38cc8c9196370f954cc5f5fe1e7a0bf535757040",
+    "raw_copy_number.pdf": "2e86ad9d9e1612f691d0ab32cf36ecc74a4ec5730a3e3fce2871fe510627ad24",
+    "all_lesions.conf_90.txt": "ec06d576e3d5b583d78d77b7a6facb488363461beeeabb2683ec8428cbe15c77",
+    "focal_dat.0.5.mat": "d23619ba7e7b3ff03b25ed9ba7158ddfaa993f565b6361a60a0a99a14ceaa3e0",
+    "amp_qplot.png": "7d3d7c6e9a42a26cf546c9912959dacaf6695f4b587ed099e846c4bcb365933e",
+    "scores.0.5.mat": "919469dcd60b428153eb50595aed39c8d4d00af4b095f215746d0299f13c4d83",
+    "focal_data_by_genes.txt": "e771131f055106510cf67397efb69432ef7e5bad0ea67877e1239357258455dc",
+    "all_thresholded.by_genes.txt": "ae296ecf5e7ab5441d79c89cdebbfaa89f4bb801b5eb3f9c89b76cb6dd0ba484",
+    "freqarms_vs_ngenes.pdf": "d2e3763adb95f19b53dbea31ca070c883e3bfd9e0740839edba22db5e8bf20f9",
+    "peak_regs.mat": "be5782868413ca582a5679502b5f62b3d27e3fad87bd5bc5bcb178ae5d577541",
+    "D.cap1.5.mat": "660d75270b34d60733a123643559277cc16b82ad4f54a4a38633018c2d5137aa",
+    "del_qplot.png": "9add856be90edb2bba49636325c132ac893eeb51568a1f35737d63f23e91f88b"
+  }
+}

@@ -42,3 +42,8 @@ class Comparison(unittest.TestCase):
     def test_invalid_tolerance(self):
         for v in (-1,float('nan'),float('inf')):
             with self.assertRaises(ValueError): compare(self.a,self.b,atol=v)
+
+    def test_padded_gene_summary_cells(self):
+        for root in (self.a,self.b):
+            (root/'amp_genes.conf_90.txt').write_text('header\tpeak\t\nq value\t0.1\t\nresidual q value\t0.2\t\n')
+        self.assertTrue(compare(self.a,self.b)['equal'])
