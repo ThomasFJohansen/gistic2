@@ -1,18 +1,16 @@
-#!/bin/sh
-## run example GISTIC analysis
-
-## output directory
-echo --- creating output directory ---
-basedir=`pwd`/example_results
-mkdir -p $basedir 
-
-echo --- running GISTIC ---
-## input file definitions
-segfile=`pwd`/examplefiles/segmentationfile.txt
-markersfile=`pwd`/examplefiles/markersfile.txt
-refgenefile=`pwd`/refgenefiles/hg16.mat
-alf=`pwd`/examplefiles/arraylistfile.txt
-cnvfile=`pwd`/examplefiles/cnvfile.txt
-## call script that sets MCR environment and calls GISTIC executable 
-./gistic2 -b $basedir -seg $segfile -mk $markersfile -refgene $refgenefile -alf $alf -cnv $cnvfile -genegistic 1 -smallmem 1 -broad 1 -brlen 0.5 -conf 0.90 -armpeel 1 -savegene 1 -gcm extreme
-
+#!/usr/bin/env bash
+set -euo pipefail
+appdir=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")
+[[ $# -le 1 ]] || { echo "usage: $0 [NEW_OUTPUT_DIRECTORY]" >&2; exit 2; }
+out=${1:-$PWD/example_results}
+[[ ! -e $out ]] || { echo "refusing existing output: $out" >&2; exit 2; }
+mkdir -p -- "$out"
+out=$(readlink -f -- "$out")
+exec "$appdir/gistic2" -b "$out" \
+  -seg "$appdir/examplefiles/segmentationfile.txt" \
+  -mk "$appdir/examplefiles/markersfile.txt" \
+  -refgene "$appdir/refgenefiles/hg16.mat" \
+  -alf "$appdir/examplefiles/arraylistfile.txt" \
+  -cnv "$appdir/examplefiles/cnvfile.txt" \
+  -genegistic 1 -smallmem 1 -broad 1 -brlen 0.5 -conf 0.90 \
+  -armpeel 1 -savegene 1 -gcm extreme

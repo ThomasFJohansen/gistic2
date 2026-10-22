@@ -1,0 +1,66 @@
+{
+  "repository": "genepattern/GISTIC_2.0",
+  "commit": "9455555051a59a2aa095bc84834227622b13bec1",
+  "files": [
+    {
+      "path": "gpunit/example/expected/segmentationfile.all_data_by_genes.txt",
+      "sha": "4430aa8933063a03a5989d5baa2754135027fb20",
+      "size": 12289869
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.all_lesions.conf_90.txt",
+      "sha": "21793bbed050a3debc4f73ffd851993921e80e76",
+      "size": 61545
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.all_thresholded.by_genes.txt",
+      "sha": "7f15761f9fb707b4ac18c3467f4179a8b31377a6",
+      "size": 4337041
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.amp_genes.conf_90.txt",
+      "sha": "b142a6086414bf048a44c58535968a8656e0cb3e",
+      "size": 3712
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.arraylistfile.txt",
+      "sha": "960330e658280ec0d0bf7aa82acb11d3ec57c4a5",
+      "size": 1525
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.broad_data_by_genes.txt",
+      "sha": "f12b5cafd2180657f295c56009238513be71dada",
+      "size": 11610414
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.del_genes.conf_90.txt",
+      "sha": "b1c7296be15a3daae8cdf8d6707959195e56e097",
+      "size": 59708
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.focal_data_by_genes.txt",
+      "sha": "99d0f521103ce23c8f9df7719f7929922cfadaed",
+      "size": 11411858
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.regions_track.conf_90.bed",
+      "sha": "0e518feaa4c3b8f7059114dd7d070bcaf18e8244",
+      "size": 1242
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.sample_cutoffs.txt",
+      "sha": "46f99e9c822d55cb2ba56d34267574acc6eee45c",
+      "size": 3466
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.sample_seg_counts.txt",
+      "sha": "b3bfe6e25438082e26542b8c24bf3f7a798f7ebf",
+      "size": 2187
+    },
+    {
+      "path": "gpunit/example/expected/segmentationfile.scores.gistic",
+      "sha": "d02f7cdee96bd6bd311a41c09f35af4babdc35d8",
+      "size": 237858
+    }
+  ]
+}

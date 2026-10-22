@@ -1,0 +1,17 @@
+name: Portable launcher and comparison tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  portable:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Shell syntax
+        run: bash -n support/gistic2 support/run_gistic_example scripts/build.sh scripts/prepare_legacy.sh scripts/diagnose.sh
+      - name: Portable regression tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Scope
+        run: echo 'These tests do not establish MATLAB numerical equivalence or AMD crash resolution.'

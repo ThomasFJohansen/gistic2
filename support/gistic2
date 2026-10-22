@@ -1,19 +1,77 @@
-#!/bin/sh
-## set MCR environment and launch GISTIC executable
-
-## NOTE: change the line below if you have installed the Matlab MCR in an alternative location
-MCR_ROOT=`pwd`/MATLAB_Compiler_Runtime
-MCR_VER=v83
-
-echo Setting Matlab MCR root to $MCR_ROOT
-
-## set up environment variables
-LD_LIBRARY_PATH=$MCR_ROOT/$MCR_VER/runtime/glnxa64:$LD_LIBRARY_PATH
-LD_LIBRARY_PATH=$MCR_ROOT/$MCR_VER/bin/glnxa64:$LD_LIBRARY_PATH
-LD_LIBRARY_PATH=$MCR_ROOT/$MCR_VER/sys/os/glnxa64:$LD_LIBRARY_PATH
+#!/usr/bin/env bash
+# Linux launcher. Compatibility restrictions are explicit, never CPU-vendor guesses.
+set -euo pipefail
+die() { printf 'gistic2: %s\n' "$*" >&2; exit 2; }
+note() { printf 'gistic2: %s\n' "$*" >&2; }
+appdir=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")
+exe=${GISTIC_EXECUTABLE:-$appdir/gp_gistic2_from_seg}
+[[ -f $exe && -x $exe ]] || die "executable missing or not executable: $exe"
+exe=$(readlink -f -- "$exe")
+abi=${GISTIC_MCR_ABI:-}
+if [[ -z $abi && -f $(dirname -- "$exe")/runtime-abi.txt ]]; then
+    IFS= read -r abi < "$(dirname -- "$exe")/runtime-abi.txt" || true
+fi
+abi=${abi:-8.3}
+[[ $abi =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?$ ]] || die 'invalid GISTIC_MCR_ABI'
+runtime=${GISTIC_MCR_ROOT:-${MCR_ROOT:-$appdir/MATLAB_Compiler_Runtime}}
+if [[ ! -d $runtime/runtime/glnxa64 && -d $runtime/v${abi//./}/runtime/glnxa64 ]]; then
+    runtime=$runtime/v${abi//./}
+fi
+[[ -d $runtime ]] || die "Runtime directory not found: $runtime"
+runtime=$(readlink -f -- "$runtime")
+[[ -f $runtime/runtime/glnxa64/libmwmclmcrrt.so.$abi ]] || die "Runtime ABI $abi missing in $runtime; use the Runtime matching the compiled executable"
+inherit=${GISTIC_INHERIT_LIBRARY_ENV:-0}
+[[ $inherit == 0 || $inherit == 1 ]] || die 'GISTIC_INHERIT_LIBRARY_ENV must be 0 or 1'
+inherited=
+if [[ $inherit == 1 ]]; then
+    inherited=${LD_LIBRARY_PATH:-}
+else
+    for var in LD_PRELOAD LD_LIBRARY_PATH BLAS_VERSION LAPACK_VERSION MATLABPATH MATLAB_JAVA; do
+        if [[ -v $var ]]; then note "isolating inherited $var (opt in with GISTIC_INHERIT_LIBRARY_ENV=1)"; fi
+        unset "$var"
+    done
+fi
+paths=("$runtime/runtime/glnxa64" "$runtime/bin/glnxa64" "$runtime/sys/os/glnxa64")
+for dir in "${paths[@]}"; do [[ -d $dir ]] || die "missing Runtime directory: $dir"; done
+for dir in "$runtime/sys/opengl/lib/glnxa64" "$runtime/extern/bin/glnxa64"; do
+    [[ ! -d $dir ]] || paths+=("$dir")
+done
+IFS=: read -r -a extras <<< "${GISTIC_EXTRA_LIBRARY_PATH:-}:$inherited"
+for dir in "${extras[@]}"; do
+    [[ -n $dir ]] || continue
+    [[ $dir == /* && -d $dir ]] || die "library paths must be existing absolute directories: $dir"
+    paths+=("$dir")
+done
+LD_LIBRARY_PATH=$(IFS=:; printf '%s' "${paths[*]}")
 export LD_LIBRARY_PATH
-XAPPLRESDIR=$MCR_ROOT/$MCR_VER/MATLAB_Component_Runtime/v83/X11/app-defaults
-export XAPPLRESDIR
-
-## launch GISTIC executable
-./gp_gistic2_from_seg $@
+export XAPPLRESDIR="$runtime/X11/app-defaults"
+case ${GISTIC_HEADLESS:-1} in 1) unset DISPLAY;; 0) :;; *) die 'GISTIC_HEADLESS must be 0 or 1';; esac
+mode=${GISTIC_COMPAT:-off}
+case $mode in off|threads|affinity|single) :;; *) die 'GISTIC_COMPAT must be off, threads, affinity, or single';; esac
+if [[ $mode == threads || $mode == single ]]; then
+    export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+fi
+prefix=()
+if [[ $mode == affinity || $mode == single ]]; then
+    command -v taskset >/dev/null || die 'taskset is required for affinity/single; threads mode does not require it'
+    allowed=
+    while IFS=: read -r key value; do
+        if [[ $key == Cpus_allowed_list ]]; then allowed=${value//[[:space:]]/}; break; fi
+    done < /proc/self/status
+    [[ -n $allowed ]] || die 'cannot determine allowed CPU set'
+    cpu=${GISTIC_CPU:-${allowed%%[,-]*}}
+    [[ $cpu =~ ^(0|[1-9][0-9]{0,6})$ ]] || die 'GISTIC_CPU must be a nonnegative decimal CPU ID'
+    found=0
+    IFS=, read -r -a ranges <<< "$allowed"
+    for range in "${ranges[@]}"; do
+        low=${range%-*}; high=${range#*-}
+        if (( cpu >= low && cpu <= high )); then found=1; break; fi
+    done
+    [[ $found == 1 ]] || die "CPU $cpu is outside the allowed set $allowed"
+    note "compatibility=$mode CPU=$cpu (allowed=$allowed)"
+    prefix=(taskset -c "$cpu")
+elif [[ -n ${GISTIC_CPU:-} ]]; then
+    die 'GISTIC_CPU requires affinity or single mode'
+fi
+# No implicit MKL_CBWR, MATLAB_DISABLE_CBWR, or MKL_DEBUG_CPU_TYPE changes.
+exec "${prefix[@]}" "$exe" "$@"

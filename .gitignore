@@ -5,3 +5,14 @@
 
 # emacs backups
 *~
+
+# Local build/runtime/regression artifacts (never vendor proprietary runtimes)
+/build/
+/results/
+/downloads/
+/MATLAB_Compiler_Runtime/
+__pycache__/
+*.pyc
+matlab_crash_dump.*
+core
+core.*
