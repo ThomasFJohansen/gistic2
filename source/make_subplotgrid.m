@@ -7,8 +7,7 @@ function gr=make_subplotgrid(vx,vy,spx,spy,bx,by,in_pos)
 % (See the accompanying LICENSE file for licensing details.)
 
 
-set(gcf,'renderer','zbuffer');
-% set(gcf,'renderer','none');
+% Let MATLAB select its supported renderer (zbuffer is obsolete).
 
 if ~exist('in_pos','var')
   in_pos=[0 0 1 1]; % lrx,lry,w,h
@@ -48,7 +47,7 @@ for i=1:ny
   for j=1:nx
     sx=sx+spx(j);
     gr{i,j}.position=[ sx sy-vy(i) vx(j) vy(i) ]; 
-    gr{i,j}.handle=NaN;
+    gr{i,j}.handle=[];
 %    gr{i,j}.handle=subplot('position',gr{i,j}.position);
 %    axis off
 %    box off

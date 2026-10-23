@@ -5,3 +5,6 @@
 
 # emacs backups
 *~
+
+# Local R2026b builds (including regenerated native MEX files)
+/build/

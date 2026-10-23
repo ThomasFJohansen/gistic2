@@ -191,6 +191,7 @@ switch elem_type
         if isfield(Dord,'armn')
           ax=axis;
           armpos=find(diff(Dord.armn)>0);
+          res=gobjects(1,length(armpos));
           for i=1:length(armpos)
             res(i)=line(ax(1:2),[armpos(i) armpos(i)]+0.5,'LineStyle','-','Color',[0.6 0.6 0.6],'LineWidth',1);
           end

@@ -8,7 +8,7 @@ function th=draw_names_box(nms,horiz,fs,vec,stagger,baseline,textparams)
 
 
 if isempty(nms)
-  th=NaN;
+  th=gobjects(1,0);
   return
 end
 
@@ -43,6 +43,7 @@ if exist('textparams','var')
 elseif stagger
 end
 
+th=gobjects(1,size(nms,1));
 set(gca,'YDir','reverse');
 if strcmp(lower(horiz(1:3)),'hor')
   axis([0.5 sum(vec)+0.5 0 1]);

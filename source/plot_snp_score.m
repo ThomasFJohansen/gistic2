@@ -113,6 +113,7 @@ sort_ads = cell(1,2);
 ord_ads = cell(1,2);
 
 for k=1:2
+  axs=gobjects(1,2);
   % initialize interpolation data
   [sort_q{k},order] = sort(q{k});
   ord_ads{k} = ads{k}(order);
@@ -472,34 +473,7 @@ for k=1:2
                   repmat({'png'},write_pdf & make_png),...
                   repmat({'fig'},~genepattern)];
   save_current_figure(name,file_formats);
-%{
-  if exist('write_pdf','var') && write_pdf
-    %  print_D(name,{{'fig'}});
-    %  print_pdf(name);
-    
-    % use vector graphics drivers to get MS quality output
-    rend = get(gcf,'renderer'); % save renderer for later restore
-    if str2double(regexprep(version,'\.[0-9]+\.[0-9]+ .+$','')) >= 8.4
-        % new (matlab R2014b on) vector graphics output method
-        set(gcf,'renderer','painters');
-        cf = get(gcf,'Number');
-    else
-        % old (pre-matlab R2014b) vector graphics output method
-        set(gcf,'renderer','none');
-        cf = num2str(gcf);
-    end
-    %!print(['-f' cf],'-depsc',[name,'.eps']);
-    print(['-f' cf],'-dpdf',[name,'.pdf']);
-    set(gcf,'renderer',rend); % restore renderer
-    if make_png
-      saveas(gcf,[name '.png'],'png');
-    end
-    %   print('-depsc',[name '.eps']); 
-  end
-  if ~genepattern
-    saveas(gcf,[name '.fig'],'fig');
-  end
-%}
+
   
   close all
 

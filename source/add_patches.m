@@ -15,6 +15,8 @@ if ~exist('lw','var')
   lw=0.1;
 end
 
+% Graphics handles are objects, not doubles. Missing patches stay placeholders.
+p=gobjects(1,length(v));
 for i=1:length(v)
   if ~isnan(v(i))
     if v(i)==0
@@ -39,8 +41,6 @@ for i=1:length(v)
             set(p(i),'LineWidth',lw);
         end
     end
-  else
-    p(i)=NaN;
   end
 end
 
