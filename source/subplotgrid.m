@@ -9,7 +9,7 @@ function [h,gr]=subplotgrid(gr,i,j,change_subplot)
 
 mini=min(i);
 minj=min(j);
-if isnan(gr{mini,minj}.handle)
+if isempty(gr{mini,minj}.handle) || ~isgraphics(gr{mini,minj}.handle,'axes')
   maxi=max(i);
   maxj=max(j);
   posmin=gr{mini,minj}.position;

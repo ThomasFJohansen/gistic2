@@ -54,6 +54,7 @@ else
     idx=1:length(y);
 end
    
+lh=gobjects(1,n);
 for j=1:length(idx)
     i=idx(j);
     p=get(th(i),'Position');

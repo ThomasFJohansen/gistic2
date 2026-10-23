@@ -5,6 +5,20 @@ Check out the <a href="https://broadinstitute.github.io/gistic2">GISTIC GitHub P
 
 **Note from forker:** Forked this to attempt to fix the issues experienced on modern AMD CPU's. 
 
+## MATLAB R2026a build
+
+The `matlab-r2026b` branch updates the source for **MATLAB Runtime R2026a (26.1)**.
+Compile on Linux x86-64 with MATLAB R2026a, MATLAB Compiler, Statistics and
+Machine Learning Toolbox, and a supported C compiler:
+
+```matlab
+mex -setup C
+build_gistic
+```
+
+See [build and run instructions](BUILD_R2026a.md). Compilation and testing on the
+original failing data are pending. This branch applies no single-CPU workaround.
+
 ## Cloning the gistic2 project
 This repository contains a submodule of matlab functions for processing copy number data named 'snputil.'
 To ensure that the snputil subdirectory is populated with files, you should clone this repository using
