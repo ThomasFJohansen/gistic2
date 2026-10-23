@@ -161,5 +161,5 @@ S.vals(end) = [];
 S.bpts = sparse(i,j,(1:numel(S.vals))',M,N); % LOGBPTS
 %fin
 
-% R2026b override of snputil cf3172b858c6ceea1688816e632228c89ba80e89:
+% R2026a override of snputil cf3172b858c6ceea1688816e632228c89ba80e89:
 % colon operands must be scalar; count the vector elements explicitly.

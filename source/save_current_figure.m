@@ -1,5 +1,5 @@
 function save_current_figure(fname,exts)
-%SAVE_CURRENT_FIGURE Save GISTIC figures using the R2026b graphics API.
+%SAVE_CURRENT_FIGURE Save GISTIC figures using the R2026a graphics API.
 % FNAME is the base filename; EXTS contains fig, png, pdf and/or eps.
 %
 % GISTIC software version 2.0

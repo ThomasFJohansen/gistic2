@@ -1,6 +1,6 @@
 function output = build_gistic(output)
-%BUILD_GISTIC Build GISTIC2 for MATLAB Runtime R2026b on Linux x86-64.
-% Run from a fresh MATLAB R2026b session:
+%BUILD_GISTIC Build GISTIC2 for MATLAB Runtime R2026a on Linux x86-64.
+% Run from a fresh MATLAB R2026a session:
 %   build_gistic
 % or:
 %   build_gistic('/absolute/path/to/new/build-directory')
@@ -8,8 +8,8 @@ function output = build_gistic(output)
 % supported C compiler configured by mex -setup C.
 
 root = fileparts(mfilename('fullpath'));
-assert(strcmp(version('-release'),'2026b'), 'gistic:build:release', ...
-    'Use MATLAB R2026b to build an application for Runtime R2026b.');
+assert(strcmp(version('-release'),'2026a'), 'gistic:build:release', ...
+    'Use MATLAB R2026a to build an application for Runtime R2026a.');
 assert(strcmp(computer('arch'),'glnxa64'), 'gistic:build:platform', ...
     'Build on Linux x86-64; a Windows/macOS build cannot run on Linux.');
 assert(~isempty(ver('compiler')) && license('test','Compiler'), ...
@@ -24,7 +24,7 @@ assert(isfile(fullfile(root,'snputil','@SegArray','SegArray.m')), ...
     'gistic:build:submodule', 'Run git submodule update --init --recursive first.');
 
 if nargin == 0
-    output = fullfile(root,'build','R2026b');
+    output = fullfile(root,'build','R2026a');
 end
 output = char(output);
 assert(~isempty(output) && output(1) == '/', 'gistic:build:path', ...
@@ -73,7 +73,7 @@ assert(fid >= 0, 'gistic:build:metadata', 'Cannot write MATLAB_VERSION.txt.');
 fileCleanup = onCleanup(@() fclose(fid)); %#ok<NASGU>
 fprintf(fid,'%s\n%s\n%s\n',version,version('-release'),version('-description'));
 fprintf('Built GISTIC2 in %s\n',output);
-fprintf('Use MATLAB Runtime R2026b at the same or newer update level.\n');
+fprintf('Use MATLAB Runtime R2026a at the same or newer update level.\n');
 end
 
 function copy_matlab_tree(from,to)

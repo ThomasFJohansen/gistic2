@@ -7,7 +7,7 @@ function varargout = lunique(varargin)
 % All Rights Reserved.
 % (See the accompanying LICENSE file for licensing details.)
 
-% R2026b supports 'legacy'. Keep GISTIC's historical index selection and
+% R2026a supports 'legacy'. Keep GISTIC's historical index selection and
 % row/column shapes; the default UNIQUE behavior is not interchangeable.
 % make sure it's not already an option
 noleg = true;

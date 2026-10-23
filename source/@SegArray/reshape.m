@@ -83,5 +83,5 @@ function R = reshape2D(S,m,n)
     R.bpts = sparse(i,j,1:numel(R.vals),m,n);
 end
 
-% R2026b override of snputil cf3172b858c6ceea1688816e632228c89ba80e89:
+% R2026a override of snputil cf3172b858c6ceea1688816e632228c89ba80e89:
 % colon operands must be scalar; count the vector elements explicitly.

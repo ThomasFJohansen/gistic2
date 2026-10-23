@@ -1,19 +1,16 @@
-# Build GISTIC2 for MATLAB Runtime R2026b
+# Build GISTIC2 for MATLAB Runtime R2026a
 
-Target: **MATLAB R2026b / MATLAB Runtime 26.2**, the latest release listed by
-MathWorks on 2026-10-23. The MATLAB source and native helpers have been updated
-for this target. Compilation and end-to-end validation are pending; no new
-executable or claim that the reported AMD crash is fixed is included.
+Target: **MATLAB R2026a / MATLAB Runtime 26.1**. The MATLAB source and native
+helpers have been updated for this target. Compilation and end-to-end validation
+are pending; no new executable or claim that the reported AMD crash is fixed is
+included.
 
-**Runtime release issue:** MathWorks currently advises RHEL/SUSE-based Linux
-distributions to wait for **R2026b Update 1** because the initial R2026b Runtime
-has an issue on those distributions. Check the current
-[Runtime download page](https://www.mathworks.com/products/compiler/matlab-runtime.html)
-before installing. This is separate from GISTIC2's older-runtime crash.
+The existing PR branch is still named `matlab-r2026b`; its build target is now
+R2026a. Use MATLAB R2026a to compile and the matching R2026a Runtime to run it.
 
 ## Compile
 
-Use **Linux x86-64 MATLAB R2026b**, MATLAB Compiler, Statistics and Machine
+Use **Linux x86-64 MATLAB R2026a**, MATLAB Compiler, Statistics and Machine
 Learning Toolbox, and a [supported C compiler](https://www.mathworks.com/support/requirements/supported-compilers.html).
 A Windows or macOS MATLAB build will not produce a Linux executable.
 MATLAB Runtime alone cannot compile the source.
@@ -36,11 +33,11 @@ Once the C compiler is configured, the noninteractive equivalent is:
 matlab -batch "build_gistic"
 ```
 
-The build writes a new `build/R2026b/` directory. It refuses to overwrite an
+The build writes a new `build/R2026a/` directory. It refuses to overwrite an
 existing build. For another attempt, choose a new absolute output path:
 
 ```matlab
-build_gistic('/absolute/path/to/gistic-r2026b-build2')
+build_gistic('/absolute/path/to/gistic-r2026a-build2')
 ```
 
 The build stages the MATLAB source, rebuilds both SegArray C helpers, runs small
@@ -59,14 +56,14 @@ machine. Do not use the old executable in `support/` or the historical
 
 ## Run the compiled application
 
-Install **R2026b Runtime at the same update level as the compiler, or newer
-within R2026b**. Point `MATLAB_RUNTIME` at the actual version directory containing
+Install **R2026a Runtime at the same update level as the compiler, or newer
+within R2026a**. Point `MATLAB_RUNTIME` at the actual version directory containing
 `runtime/`, `bin/`, and `sys/`:
 
 ```bash
-export MATLAB_RUNTIME=/path/to/MATLAB_Runtime/R2026b
+export MATLAB_RUNTIME=/path/to/MATLAB_Runtime/R2026a
 mkdir -p /path/to/new-results
-/path/to/build/R2026b/gistic2 \
+/path/to/build/R2026a/gistic2 \
   -b /path/to/new-results \
   -seg /path/to/input.seg \
   -refgene /path/to/reference.mat
@@ -104,7 +101,7 @@ It also omits `snputil/newline.m`, which shadows MATLAB's built-in while returni
 literal backslash sequences; its single use is diagnostic logging.
 
 The scoring, peak detection, histograms and statistical methods are retained.
-`histc`, `strmatch`, and `nanmean`/`nanmedian` remain available in R2026b. Blindly
+`histc`, `strmatch`, and `nanmean`/`nanmedian` remain available in R2026a. Blindly
 replacing them would risk changing bin boundaries, matching, or SegArray dispatch.
 
 ## Checks and remaining validation
@@ -126,7 +123,7 @@ that test is required before describing the AMD crash as resolved.
 
 ## MathWorks references
 
-- [Runtime releases and RHEL/SUSE notice](https://www.mathworks.com/products/compiler/matlab-runtime.html)
+- [Runtime downloads](https://www.mathworks.com/products/compiler/matlab-runtime.html)
 - [Compiler/Runtime release and update matching](https://www.mathworks.com/help/compiler/about-the-matlab-runtime.html)
 - [Nonscalar colon operands: R2025a change](https://www.mathworks.com/help/matlab/ref/double.colon.html)
 - [Graphics handles are objects](https://blogs.mathworks.com/loren/2014/11/05/matlab-r2014b-graphics-part-3-compatibility-considerations-in-the-new-graphics-system/)

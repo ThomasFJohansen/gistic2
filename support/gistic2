@@ -2,9 +2,9 @@
 # Launch the freshly compiled application using MATLAB's generated script.
 set -eu
 here=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-: "${MATLAB_RUNTIME:?Set MATLAB_RUNTIME to the installed R2026b Runtime directory}"
+: "${MATLAB_RUNTIME:?Set MATLAB_RUNTIME to the installed R2026a Runtime directory}"
 if [ ! -f "$here/run_gp_gistic2_from_seg.sh" ]; then
-    echo "Run build_gistic in MATLAB R2026b, then use the gistic2 script in its output directory." >&2
+    echo "Run build_gistic in MATLAB R2026a, then use the gistic2 script in its output directory." >&2
     exit 1
 fi
 exec "$here/run_gp_gistic2_from_seg.sh" "$MATLAB_RUNTIME" "$@"
